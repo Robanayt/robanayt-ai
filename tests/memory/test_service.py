@@ -8,15 +8,15 @@ import threading
 import pytest
 from tests.ai.fakes import FakeProvider
 
-from jarvis.ai.router import ProviderRouter
-from jarvis.ai.service import AIService
-from jarvis.core.config import MemoryConfig
-from jarvis.memory.errors import (
+from robanayt_ai.ai.router import ProviderRouter
+from robanayt_ai.ai.service import AIService
+from robanayt_ai.core.config import MemoryConfig
+from robanayt_ai.memory.errors import (
     MemoryDisabledError,
     MemoryExportError,
     MemoryImportError,
 )
-from jarvis.memory.service import MemoryService, safe_output_path
+from robanayt_ai.memory.service import MemoryService, safe_output_path
 
 
 def _config(tmp_path, **kwargs) -> MemoryConfig:

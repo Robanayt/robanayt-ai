@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.core.run_mode import RunMode
+from robanayt_ai.core.run_mode import RunMode
 
 
 def test_from_value_accepts_known_modes() -> None:

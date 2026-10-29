@@ -7,9 +7,9 @@ from pathlib import Path
 import pytest
 
 from tests.tools.helpers import FakeClock
-from jarvis.core.bus import Event, EventBus
-from jarvis.tools.audit import TOOL_BLOCKED, TOOL_EXECUTED, AuditLog, scrub
-from jarvis.tools.models import AuditRecord
+from robanayt_ai.core.bus import Event, EventBus
+from robanayt_ai.tools.audit import TOOL_BLOCKED, TOOL_EXECUTED, AuditLog, scrub
+from robanayt_ai.tools.models import AuditRecord
 
 
 def record(**overrides: object) -> AuditRecord:

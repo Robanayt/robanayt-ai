@@ -9,14 +9,14 @@ from pathlib import Path
 
 import pytest
 
-from jarvis.ai.errors import ProviderUnavailableError
-from jarvis.ai.provider import ProviderProfile
-from jarvis.ai.router import ProviderRouter, RoutingPolicy
-from jarvis.ai.service import AIService
-from jarvis.core.config import OrchestrationConfig, ToolsConfig
-from jarvis.orchestration import DialogService
-from jarvis.orchestration.models import DialogStatus
-from jarvis.tools import build_tool_system
+from robanayt_ai.ai.errors import ProviderUnavailableError
+from robanayt_ai.ai.provider import ProviderProfile
+from robanayt_ai.ai.router import ProviderRouter, RoutingPolicy
+from robanayt_ai.ai.service import AIService
+from robanayt_ai.core.config import OrchestrationConfig, ToolsConfig
+from robanayt_ai.orchestration import DialogService
+from robanayt_ai.orchestration.models import DialogStatus
+from robanayt_ai.tools import build_tool_system
 from tests.orchestration.dialog_fakes import (
     FakeClock,
     ScriptedProvider,

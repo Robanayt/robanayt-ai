@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.ai.errors import (
+from robanayt_ai.ai.errors import (
     AIError,
     AIRequestError,
     AIDisabledError,

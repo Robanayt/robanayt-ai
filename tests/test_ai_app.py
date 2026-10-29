@@ -5,7 +5,7 @@ from __future__ import annotations
 import urllib.error
 import urllib.request
 
-from jarvis.app import EXIT_AI_ERROR, EXIT_OK, main
+from robanayt_ai.app import EXIT_AI_ERROR, EXIT_OK, main
 
 
 def _block_network(monkeypatch) -> None:

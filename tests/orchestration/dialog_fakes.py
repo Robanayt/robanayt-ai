@@ -12,16 +12,16 @@ import json
 from pathlib import Path
 from typing import Any
 
-from jarvis.ai.models import AIChunk, AIRequest, AIResponse, ProviderStatus
-from jarvis.ai.provider import ProviderCapabilities
-from jarvis.ai.router import ProviderRouter, RoutingPolicy
-from jarvis.ai.service import AIService
-from jarvis.core.config import MemoryConfig, OrchestrationConfig, ToolsConfig
-from jarvis.memory import MemoryService
-from jarvis.orchestration import DialogService
-from jarvis.orchestration.protocol import TOOL_CALL_KEY
-from jarvis.tools import build_tool_system
-from jarvis.tools.models import ArgumentSpec, PermissionLevel, ToolSpec
+from robanayt_ai.ai.models import AIChunk, AIRequest, AIResponse, ProviderStatus
+from robanayt_ai.ai.provider import ProviderCapabilities
+from robanayt_ai.ai.router import ProviderRouter, RoutingPolicy
+from robanayt_ai.ai.service import AIService
+from robanayt_ai.core.config import MemoryConfig, OrchestrationConfig, ToolsConfig
+from robanayt_ai.memory import MemoryService
+from robanayt_ai.orchestration import DialogService
+from robanayt_ai.orchestration.protocol import TOOL_CALL_KEY
+from robanayt_ai.tools import build_tool_system
+from robanayt_ai.tools.models import ArgumentSpec, PermissionLevel, ToolSpec
 
 
 class FakeClock:

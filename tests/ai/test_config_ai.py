@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.core.config import AIConfig, ConfigError, default_config, load_config
+from robanayt_ai.core.config import AIConfig, ConfigError, default_config, load_config
 
 
 def test_ai_defaults_require_nothing() -> None:

@@ -4,13 +4,13 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from jarvis.surfaces.bridge import DialogBridge
-from jarvis.surfaces.theme import DEFAULT_THEME
-from jarvis.surfaces.ui import HolographicApp
-from jarvis.surfaces.ui.settings import open_settings
-from jarvis.voice.models import VoiceState
-from jarvis.voice.router import VoiceRouter
-from jarvis.voice.session import VoiceSession
+from robanayt_ai.surfaces.bridge import DialogBridge
+from robanayt_ai.surfaces.theme import DEFAULT_THEME
+from robanayt_ai.surfaces.ui import HolographicApp
+from robanayt_ai.surfaces.ui.settings import open_settings
+from robanayt_ai.voice.models import VoiceState
+from robanayt_ai.voice.router import VoiceRouter
+from robanayt_ai.voice.session import VoiceSession
 from tests.orchestration.dialog_fakes import answer, make_dialog
 from tests.surfaces.test_bridge import FakeDialog, WaitingDialog
 from tests.voice.fakes import ScriptedSTT, ScriptedTTS, UnavailableSTT

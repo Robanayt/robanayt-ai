@@ -8,8 +8,8 @@ import os
 import pytest
 from dataclasses import replace
 
-from jarvis.ai.errors import ProviderUnavailableError
-from jarvis.app import (
+from robanayt_ai.ai.errors import ProviderUnavailableError
+from robanayt_ai.app import (
     EXIT_ALREADY_RUNNING,
     EXIT_CONFIG_ERROR,
     EXIT_OK,
@@ -20,7 +20,7 @@ from jarvis.app import (
     main,
     run,
 )
-from jarvis.core.config import load_config
+from robanayt_ai.core.config import load_config
 
 
 def test_main_starts_and_exits_cleanly(tmp_path, monkeypatch, capsys) -> None:
@@ -184,7 +184,7 @@ def test_blocked_network_removes_remote_providers_from_routing(tmp_path, monkeyp
 def test_ui_reports_a_missing_toolkit(tmp_path, monkeypatch, capsys) -> None:
     """Without tkinter the interface is reported, not faked."""
     monkeypatch.chdir(tmp_path)
-    monkeypatch.setattr("jarvis.app.TK_AVAILABLE", False)
+    monkeypatch.setattr("robanayt_ai.app.TK_AVAILABLE", False)
 
     assert main(["--ui"]) == EXIT_CONFIG_ERROR
 

@@ -7,16 +7,16 @@ import datetime as dt
 import pytest
 
 from tests.tools.helpers import FakeClock
-from jarvis.core.config import ToolsConfig
-from jarvis.tools import build_tool_system
-from jarvis.tools.builtins import (
+from robanayt_ai.core.config import ToolsConfig
+from robanayt_ai.tools import build_tool_system
+from robanayt_ai.tools.builtins import (
     BUILTIN_NAMES,
     SAFE_BUILTIN_NAMES,
     builtin_policy,
     register_builtins,
 )
-from jarvis.tools.models import PermissionLevel, ToolRequest, ToolStatus
-from jarvis.tools.registry import ToolRegistry
+from robanayt_ai.tools.models import PermissionLevel, ToolRequest, ToolStatus
+from robanayt_ai.tools.registry import ToolRegistry
 
 
 def test_registration_adds_all_builtin_tools() -> None:

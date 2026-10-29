@@ -16,10 +16,10 @@ from tests.tools.helpers import (
     safe_spec,
     sleeping_handler,
 )
-from jarvis.tools.audit import AuditLog
-from jarvis.tools.errors import ToolValidationError
-from jarvis.tools.executor import ToolExecutor
-from jarvis.tools.models import (
+from robanayt_ai.tools.audit import AuditLog
+from robanayt_ai.tools.errors import ToolValidationError
+from robanayt_ai.tools.executor import ToolExecutor
+from robanayt_ai.tools.models import (
     ArgumentSpec,
     PermissionDecision,
     PermissionLevel as Level,
@@ -28,8 +28,8 @@ from jarvis.tools.models import (
     ToolStatus,
     digest_of,
 )
-from jarvis.tools.policy import PermissionPolicy
-from jarvis.tools.registry import ToolRegistry
+from robanayt_ai.tools.policy import PermissionPolicy
+from robanayt_ai.tools.registry import ToolRegistry
 
 
 def build(

@@ -6,8 +6,8 @@ import logging
 
 import pytest
 
-from jarvis.core.config import LoggingConfig
-from jarvis.core.log_config import resolve_level, setup_logging, shutdown_logging
+from robanayt_ai.core.config import LoggingConfig
+from robanayt_ai.core.log_config import resolve_level, setup_logging, shutdown_logging
 
 
 @pytest.fixture(autouse=True)
@@ -30,7 +30,7 @@ def test_resolve_level_rejects_unknown() -> None:
 def test_console_handler_configured() -> None:
     logger = setup_logging(LoggingConfig(level="DEBUG", to_file=False), force=True)
 
-    assert logger.name == "jarvis"
+    assert logger.name == "robanayt_ai"
     assert logger.level == logging.DEBUG
     assert len(logger.handlers) == 1
 
@@ -52,11 +52,11 @@ def test_file_handler_writes_records(tmp_path) -> None:
 
 def test_setup_is_idempotent_without_force() -> None:
     setup_logging(LoggingConfig(level="INFO", to_file=False), force=True)
-    before = len(logging.getLogger("jarvis").handlers)
+    before = len(logging.getLogger("robanayt_ai").handlers)
 
     setup_logging(LoggingConfig(level="INFO", to_file=False))
 
-    assert len(logging.getLogger("jarvis").handlers) == before
+    assert len(logging.getLogger("robanayt_ai").handlers) == before
 
 
 def test_level_override_without_reconfiguration() -> None:

@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.ai.context import DEFAULT_MAX_MESSAGES, ConversationContext
-from jarvis.ai.errors import AIRequestError
-from jarvis.ai.models import AIMessage
+from robanayt_ai.ai.context import DEFAULT_MAX_MESSAGES, ConversationContext
+from robanayt_ai.ai.errors import AIRequestError
+from robanayt_ai.ai.models import AIMessage
 
 
 def test_context_starts_empty() -> None:

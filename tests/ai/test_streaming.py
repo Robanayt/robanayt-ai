@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from jarvis.ai.models import AIChunk, AIResponse
-from jarvis.ai.streaming import (
+from robanayt_ai.ai.models import AIChunk, AIResponse
+from robanayt_ai.ai.streaming import (
     StreamAccumulator,
     accumulate,
     as_stream,

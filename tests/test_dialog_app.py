@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import urllib.request
 
-from jarvis.app import EXIT_DIALOG_ERROR, EXIT_OK, main
+from robanayt_ai.app import EXIT_DIALOG_ERROR, EXIT_OK, main
 
 
 class _FakeResponse:

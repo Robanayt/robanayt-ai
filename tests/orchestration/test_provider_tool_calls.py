@@ -12,13 +12,13 @@ from collections.abc import Iterator, Mapping
 from pathlib import Path
 from typing import Any
 
-from jarvis.ai.providers.ollama import OllamaProvider
-from jarvis.ai.providers.openai_compatible import OpenAICompatibleProvider
-from jarvis.ai.router import ProviderRouter, RoutingPolicy
-from jarvis.ai.service import AIService
-from jarvis.core.config import OrchestrationConfig, ToolsConfig
-from jarvis.orchestration import DialogService, DialogStatus
-from jarvis.tools import build_tool_system
+from robanayt_ai.ai.providers.ollama import OllamaProvider
+from robanayt_ai.ai.providers.openai_compatible import OpenAICompatibleProvider
+from robanayt_ai.ai.router import ProviderRouter, RoutingPolicy
+from robanayt_ai.ai.service import AIService
+from robanayt_ai.core.config import OrchestrationConfig, ToolsConfig
+from robanayt_ai.orchestration import DialogService, DialogStatus
+from robanayt_ai.tools import build_tool_system
 from tests.orchestration.dialog_fakes import FakeClock, memory_service
 
 TEST_KEY_ENV = "JARVIS_TEST_OPENAI_KEY"

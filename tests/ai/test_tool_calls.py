@@ -17,12 +17,12 @@ from tests.ai.fakes import (
     openai_chat_response,
 )
 
-from jarvis.ai.errors import AIRequestError, ProviderResponseError
-from jarvis.ai.models import AIRequest, AIMessage, AITool
-from jarvis.ai.providers.ollama import OllamaProvider
-from jarvis.ai.providers.openai_compatible import OpenAICompatibleProvider
-from jarvis.ai.tool_calls import TOOL_CALL_KEY, tool_call_from_message
-from jarvis.orchestration.protocol import tool_declarations
+from robanayt_ai.ai.errors import AIRequestError, ProviderResponseError
+from robanayt_ai.ai.models import AIRequest, AIMessage, AITool
+from robanayt_ai.ai.providers.ollama import OllamaProvider
+from robanayt_ai.ai.providers.openai_compatible import OpenAICompatibleProvider
+from robanayt_ai.ai.tool_calls import TOOL_CALL_KEY, tool_call_from_message
+from robanayt_ai.orchestration.protocol import tool_declarations
 
 TEST_KEY_ENV = "JARVIS_TEST_OPENAI_KEY"
 
@@ -325,8 +325,8 @@ def test_tool_declaration_requires_a_name() -> None:
 
 
 def test_tool_declarations_from_registry_hide_permission() -> None:
-    from jarvis.core.config import ToolsConfig
-    from jarvis.tools import build_tool_system
+    from robanayt_ai.core.config import ToolsConfig
+    from robanayt_ai.tools import build_tool_system
 
     tools = build_tool_system(ToolsConfig())
     declarations = tool_declarations(tools.registry)

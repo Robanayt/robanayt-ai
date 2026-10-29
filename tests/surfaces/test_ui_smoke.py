@@ -13,8 +13,8 @@ import pytest
 
 pytest.importorskip("tkinter")
 
-from jarvis.surfaces.bridge import DialogBridge  # noqa: E402
-from jarvis.surfaces.protocol import (  # noqa: E402
+from robanayt_ai.surfaces.bridge import DialogBridge  # noqa: E402
+from robanayt_ai.surfaces.protocol import (  # noqa: E402
     STATE_ERROR,
     STATE_IDLE,
     STATE_THINKING,
@@ -22,15 +22,15 @@ from jarvis.surfaces.protocol import (  # noqa: E402
     STATE_WAITING,
     PendingView,
 )
-from jarvis.surfaces.theme import (  # noqa: E402
+from robanayt_ai.surfaces.theme import (  # noqa: E402
     DEFAULT_THEME,
     REDUCED_MOTION_THEME,
     palette_for_state,
 )
-from jarvis.surfaces.ui.approval import ApprovalDialog  # noqa: E402
-from jarvis.surfaces.ui.core_widget import CoreWidget  # noqa: E402
-from jarvis.surfaces.ui.window import HolographicApp  # noqa: E402
-from jarvis.orchestration.models import DialogResult, DialogStatus  # noqa: E402
+from robanayt_ai.surfaces.ui.approval import ApprovalDialog  # noqa: E402
+from robanayt_ai.surfaces.ui.core_widget import CoreWidget  # noqa: E402
+from robanayt_ai.surfaces.ui.window import HolographicApp  # noqa: E402
+from robanayt_ai.orchestration.models import DialogResult, DialogStatus  # noqa: E402
 from tests.surfaces.test_bridge import (  # noqa: E402
     Conversation,
     FakeDialog,

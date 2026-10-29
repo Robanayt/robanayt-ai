@@ -1,7 +1,8 @@
 # Robanayt AI
 
-*Пользовательское название проекта — **Robanayt AI**. Техническое имя пакета —
-`jarvis`: каталог `jarvis/` и импорты не переименованы.*
+*Пользовательское название проекта — **Robanayt AI**. Каталог исходников и имя
+пакета — `robanayt_ai`. Технические имена данных (`jarvis.db`, `jarvis.log`,
+`jarvis.lock`) и переменные окружения `JARVIS_*` сохранены для совместимости.*
 
 Локальный голосовой ассистент. Проект находится на **Фазе 8** — реализованы слой
 ядра (конфигурация, шина событий, жизненный цикл, логирование, режимы запуска,
@@ -35,7 +36,7 @@
 ## Запуск
 
 ```bash
-python -m jarvis
+python -m robanayt_ai
 ```
 
 Ожидаемый вывод:
@@ -71,17 +72,17 @@ note:     AI backend is configured but not contacted; tools are registered but n
 ```
 
 Блок выше — ожидаемый вывод сборки: баннер печатает название продукта
-`Robanayt AI` и его метаданные (`phase-8`). Техническое имя пакета остаётся
-`jarvis` — это видно в способе запуска (`python -m jarvis`), в импортах и в
-переменных окружения `JARVIS_*`.
+`Robanayt AI` и его метаданные (`phase-8`). Способ запуска —
+`python -m robanayt_ai`; переменные окружения по-прежнему имеют префикс
+`JARVIS_*`, а файлы данных называются `jarvis.db` / `jarvis.log`.
 
 Полезные варианты запуска:
 
 ```bash
-python -m jarvis --run-mode diagnostic   # DEBUG-логи, без инструментов
-python -m jarvis --run-mode safe         # инструменты отключены
-python -m jarvis --no-single-instance    # пропустить проверку второго экземпляра
-python -m jarvis --version
+python -m robanayt_ai --run-mode diagnostic   # DEBUG-логи, без инструментов
+python -m robanayt_ai --run-mode safe         # инструменты отключены
+python -m robanayt_ai --no-single-instance    # пропустить проверку второго экземпляра
+python -m robanayt_ai --version
 ```
 
 Коды выхода: `0` — норма, `2` — уже запущен другой экземпляр,
@@ -114,9 +115,9 @@ live-проверка Ollama (модель не запущена): `skipped` ≠
 цена/качество модели не влияют на выбор ушей и голоса.
 
 ```bash
-.venv\Scripts\python -m jarvis --voice          # статус: без записи и без БД
-.venv\Scripts\python -m jarvis --voice-listen   # явно: послушать и отправить transcript в диалог
-.venv\Scripts\python -m jarvis --voice-say "привет"   # явно: произнести текст
+.venv\Scripts\python -m robanayt_ai --voice          # статус: без записи и без БД
+.venv\Scripts\python -m robanayt_ai --voice-listen   # явно: послушать и отправить transcript в диалог
+.venv\Scripts\python -m robanayt_ai --voice-say "привет"   # явно: произнести текст
 ```
 
 Настройки (`[voice]`, env `JARVIS_VOICE_*`): `enabled`, `stt_provider`,
@@ -140,11 +141,11 @@ live-проверка Ollama (модель не запущена): `skipped` ≠
 - Никакого автоматического прослушивания/озвучивания — только по явному действию.
 
 ```bash
-.venv\Scripts\python -m jarvis --ui
+.venv\Scripts\python -m robanayt_ai --ui
 ```
 
 Окно строится на `tkinter` (стандартная библиотека) — новых зависимостей нет.
-Интерфейс не владеет ядром: он работает только через `jarvis.surfaces.bridge`
+Интерфейс не владеет ядром: он работает только через `robanayt_ai.surfaces.bridge`
 (`send`, `approve`, `cancel`, `snapshot`), поэтому диалог, память, инструменты
 и разрешения идут тем же путём, что и в CLI.
 
@@ -176,7 +177,7 @@ live-проверка Ollama (модель не запущена): `skipped` ≠
   пройденный live-тест. Ничего не устанавливалось и не запускалось.
 - **`pyproject.toml` приведён к пакету 2026-10-29** (шаг 4 Git-аудита): версия
   `0.1.0` → `0.5.0`, описание «Phase 0 skeleton» → «Phase 8». Техническое имя
-  `name = "jarvis"` и `requires-python >=3.10` не менялись.
+  `name = "robanayt_ai"` и `requires-python >=3.10` не менялись.
 - **Косметические эффекты вне canvas — deferred** (прозрачность окна и
   эффекты вне холста); помечены в интерфейсе как «не реализовано (отложено)».
 - **Отмена хода кооперативная:** останавливает ход между шагами и не прерывает
@@ -194,7 +195,7 @@ live-проверка Ollama (модель не запущена): `skipped` ≠
 ## AI-слой (Фаза 2 + Фаза 7: гибридная маршрутизация)
 
 ```
-jarvis/ai/
+robanayt_ai/ai/
     models.py       AIMessage, AIRequest, AIResponse, AIChunk, ProviderStatus
     errors.py       AIError и типы ошибок провайдеров + санитайзеры секретов
     http.py         транспорт на urllib (stdlib), инжектируется в тестах
@@ -211,7 +212,7 @@ jarvis/ai/
 Пример использования:
 
 ```python
-from jarvis.ai import AIService, OllamaProvider, ProviderRouter
+from robanayt_ai.ai import AIService, OllamaProvider, ProviderRouter
 
 service = AIService(ProviderRouter([OllamaProvider(model="qwen3.5:4b")]))
 response = service.generate(prompt="Привет, JARVIS")
@@ -240,7 +241,7 @@ print(response.provider, response.content)
 Увидеть решение без обращения к сети:
 
 ```bash
-.venv\Scripts\python -m jarvis --ai-routing
+.venv\Scripts\python -m robanayt_ai --ai-routing
 ```
 
 Причины выбора и отказа видны также в стартовом баннере и во вкладке
@@ -250,7 +251,7 @@ print(response.provider, response.content)
 ## Память (Фаза 3)
 
 ```
-jarvis/memory/
+robanayt_ai/memory/
     models.py              Conversation, Message, SavedMemory, SearchResult,
                            MemoryStats, PreparedContext + валидация
     errors.py              типы ошибок (базовый класс — не MemoryError)
@@ -265,8 +266,8 @@ jarvis/memory/
 миграции инкрементальные). Старт приложения базу **не** создаёт и не мигрирует.
 
 ```python
-from jarvis.core.config import MemoryConfig
-from jarvis.memory.service import MemoryService
+from robanayt_ai.core.config import MemoryConfig
+from robanayt_ai.memory.service import MemoryService
 
 service = MemoryService(MemoryConfig(directory="runtime/memory"))
 conversation = service.create_conversation("утро")
@@ -287,7 +288,7 @@ service.close()
 ## Инструменты (Фаза 4)
 
 ```
-jarvis/tools/
+robanayt_ai/tools/
     models.py       ToolSpec, ArgumentSpec, ToolRequest, ToolResult, ToolStatus,
                     PermissionLevel, ApprovalToken, AuditRecord
     errors.py       ToolError и типы ошибок
@@ -312,8 +313,8 @@ ToolRequest -> реестр -> валидация аргументов -> пол
 Пример:
 
 ```python
-from jarvis.core.config import ToolsConfig
-from jarvis.tools import ToolRequest, build_tool_system
+from robanayt_ai.core.config import ToolsConfig
+from robanayt_ai.tools import ToolRequest, build_tool_system
 
 system = build_tool_system(ToolsConfig())
 
@@ -339,7 +340,7 @@ print(system.executor.execute(request, approval=approval).status)   # success
 ## Диалог (Фаза 5)
 
 ```
-jarvis/orchestration/
+robanayt_ai/orchestration/
     models.py       DialogStatus, DialogResult, ToolCallRecord, PendingApproval
     errors.py       ошибки слоя оркестрации
     protocol.py     два явных канала вызова инструмента
@@ -364,7 +365,7 @@ ToolExecutor с проверкой политики) -> результат мо�
 Структурированный канал заполняется нативно: провайдеры Ollama и
 OpenAI-compatible отправляют описания инструментов в поле `tools`, а своё
 поле `tool_calls` приводят к `metadata["tool_call"]`
-(`jarvis.ai.tool_calls`). Из ответа провайдера берутся только `name` и
+(`robanayt_ai.ai.tool_calls`). Из ответа провайдера берутся только `name` и
 `arguments`: идентификаторы, `approved`, `permission` и любые другие поля
 отбрасываются, поэтому модель не может передать разрешение через payload.
 Невалидные аргументы, неподдерживаемый тип вызова и более одного вызова в
@@ -373,10 +374,10 @@ OpenAI-compatible отправляют описания инструментов
 инструментов в ней не агрегируются.
 
 ```python
-from jarvis.core.config import MemoryConfig, OrchestrationConfig, ToolsConfig
-from jarvis.memory import MemoryService
-from jarvis.orchestration import DialogService
-from jarvis.tools import build_tool_system
+from robanayt_ai.core.config import MemoryConfig, OrchestrationConfig, ToolsConfig
+from robanayt_ai.memory import MemoryService
+from robanayt_ai.orchestration import DialogService
+from robanayt_ai.tools import build_tool_system
 
 dialog = DialogService(
     ai_service,                       # AIService из Фазы 2
@@ -402,7 +403,7 @@ if result.status.value == "approval_required":
 ## Структура (Фаза 8)
 
 ```
-pyproject.toml      манифест, конфиг pytest, точка входа jarvis
+pyproject.toml      манифест, конфиг pytest, точка входа robanayt-ai
 README.md           этот файл
 PLAN.md             план фаз и переноса ядра
 STATUS.md           снимок текущего состояния
@@ -410,9 +411,9 @@ docs/               отчёты сессий (docs/night/) и архитект�
                     (docs/architecture/)
 .gitignore
 .gitattributes     переносы строк: LF в репозитории, CRLF для .ps1/.bat
-jarvis/
+robanayt_ai/
     __init__.py     метаданные пакета (0.5.0, phase-8)
-    __main__.py     python -m jarvis
+    __main__.py     python -m robanayt_ai
     app.py          CLI, композиция ядра, AI-слоя, памяти и инструментов
     core/
         config.py          типизированный конфиг: defaults + TOML + env
@@ -502,8 +503,8 @@ allow_remote = false            # удалённые вызовы выключе
 Явные AI-операции (единственные, кто использует сеть):
 
 ```bash
-python -m jarvis --ai-status                  # конфигурация/доступность провайдеров
-python -m jarvis --ai-generate "Привет"       # один запрос, ответ в stdout
+python -m robanayt_ai --ai-status                  # конфигурация/доступность провайдеров
+python -m robanayt_ai --ai-generate "Привет"       # один запрос, ответ в stdout
 ```
 
 Без модели `ollama` сообщает `configured=False`, а `--ai-generate` завершается
@@ -530,12 +531,12 @@ Env: `JARVIS_MEMORY_ENABLED`, `JARVIS_MEMORY_DIR`. База не обязана 
 Команды памяти (каждая — явный вызов; БД создаётся только здесь):
 
 ```bash
-python -m jarvis --memory-status               # схема, счётчики, бэкенд поиска
-python -m jarvis --memory-list                 # только метаданные диалогов
-python -m jarvis --memory-show ID              # содержимое по явному запросу
-python -m jarvis --memory-search "запрос"      # сниппеты, локально
-python -m jarvis --memory-export ID --memory-out path.json
-python -m jarvis --memory-clear --yes          # только с подтверждением
+python -m robanayt_ai --memory-status               # схема, счётчики, бэкенд поиска
+python -m robanayt_ai --memory-list                 # только метаданные диалогов
+python -m robanayt_ai --memory-show ID              # содержимое по явному запросу
+python -m robanayt_ai --memory-search "запрос"      # сниппеты, локально
+python -m robanayt_ai --memory-export ID --memory-out path.json
+python -m robanayt_ai --memory-clear --yes          # только с подтверждением
 ```
 
 `--memory-clear` без `--yes` завершается кодом `5` и ничего не удаляет.
@@ -557,12 +558,12 @@ Env: `JARVIS_TOOLS_ENABLED`, `JARVIS_TOOLS_TIMEOUT`, `JARVIS_TOOLS_APPROVAL_TTL`
 `JARVIS_TOOLS_AUDIT`.
 
 ```bash
-python -m jarvis --tools-list                      # инструменты и их уровень
-python -m jarvis --tools-describe                  # описания для AI-запроса
-python -m jarvis --tools-run current_time
-python -m jarvis --tools-run echo_text --tools-args '{"text": "hi"}'             # approval_required, exit 6
-python -m jarvis --tools-run echo_text --tools-args '{"text": "hi"}' --tools-approve
-python -m jarvis --tools-audit                     # аудит этого запуска
+python -m robanayt_ai --tools-list                      # инструменты и их уровень
+python -m robanayt_ai --tools-describe                  # описания для AI-запроса
+python -m robanayt_ai --tools-run current_time
+python -m robanayt_ai --tools-run echo_text --tools-args '{"text": "hi"}'             # approval_required, exit 6
+python -m robanayt_ai --tools-run echo_text --tools-args '{"text": "hi"}' --tools-approve
+python -m robanayt_ai --tools-audit                     # аудит этого запуска
 ```
 
 ### Диалог (`[orchestration]`)
@@ -580,10 +581,10 @@ Env: `JARVIS_ORCHESTRATION_ENABLED`, `JARVIS_ORCHESTRATION_MAX_TOOL_CALLS`,
 `JARVIS_ORCHESTRATION_ALLOW_TEXT_CALLS`, `JARVIS_ORCHESTRATION_PERSIST`.
 
 ```bash
-python -m jarvis --dialog-send "Сколько будет 2+40?"
-python -m jarvis --dialog-send "ещё" --dialog-conversation ID
-python -m jarvis --dialog-pending                 # ожидают подтверждения
-python -m jarvis --dialog-approve PENDING_ID      # подтвердить конкретный вызов
+python -m robanayt_ai --dialog-send "Сколько будет 2+40?"
+python -m robanayt_ai --dialog-send "ещё" --dialog-conversation ID
+python -m robanayt_ai --dialog-pending                 # ожидают подтверждения
+python -m robanayt_ai --dialog-approve PENDING_ID      # подтвердить конкретный вызов
 ```
 
 Один вызов CLI — один ограниченный ход; интерактивного цикла нет. Если

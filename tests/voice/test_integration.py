@@ -9,12 +9,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from jarvis.core.config import ToolsConfig
-from jarvis.orchestration.models import DialogStatus
-from jarvis.tools import build_tool_system
-from jarvis.voice.models import VoiceState
-from jarvis.voice.router import LOCAL_ONLY, VoiceRouter
-from jarvis.voice.session import VoiceSession
+from robanayt_ai.core.config import ToolsConfig
+from robanayt_ai.orchestration.models import DialogStatus
+from robanayt_ai.tools import build_tool_system
+from robanayt_ai.voice.models import VoiceState
+from robanayt_ai.voice.router import LOCAL_ONLY, VoiceRouter
+from robanayt_ai.voice.session import VoiceSession
 from tests.orchestration.dialog_fakes import (
     answer,
     make_dialog,
@@ -109,7 +109,7 @@ def test_spoken_request_for_an_unknown_tool_is_denied(tmp_path: Path) -> None:
 
 
 def test_the_dialogue_status_is_preserved_for_voice(tmp_path: Path) -> None:
-    from jarvis.ai.errors import ProviderUnavailableError
+    from robanayt_ai.ai.errors import ProviderUnavailableError
 
     dialog, _provider, _memory, _tools, session = _voice(
         tmp_path, [ProviderUnavailableError("модель недоступна")]

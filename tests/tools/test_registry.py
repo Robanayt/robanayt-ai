@@ -10,9 +10,9 @@ from tests.tools.helpers import (
     denied_spec,
     safe_spec,
 )
-from jarvis.tools.errors import DuplicateToolError, ToolNotFoundError, ToolSpecError
-from jarvis.tools.models import ArgumentSpec, ToolContext
-from jarvis.tools.registry import ToolRegistry
+from robanayt_ai.tools.errors import DuplicateToolError, ToolNotFoundError, ToolSpecError
+from robanayt_ai.tools.models import ArgumentSpec, ToolContext
+from robanayt_ai.tools.registry import ToolRegistry
 
 
 def noop(arguments: object, context: ToolContext) -> str:

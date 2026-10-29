@@ -5,18 +5,18 @@ from __future__ import annotations
 import pytest
 from tests.ai.fakes import FakeProvider
 
-from jarvis.ai.context import ConversationContext
-from jarvis.ai.errors import (
+from robanayt_ai.ai.context import ConversationContext
+from robanayt_ai.ai.errors import (
     AIDisabledError,
     AIRequestError,
     ProviderAuthenticationError,
     ProviderTimeoutError,
     ProviderUnavailableError,
 )
-from jarvis.ai.models import AIRequest, AIMessage
-from jarvis.ai.router import ProviderRouter, RoutingPolicy
-from jarvis.ai.service import AIService
-from jarvis.ai.streaming import collect_text
+from robanayt_ai.ai.models import AIRequest, AIMessage
+from robanayt_ai.ai.router import ProviderRouter, RoutingPolicy
+from robanayt_ai.ai.service import AIService
+from robanayt_ai.ai.streaming import collect_text
 
 
 def _service(provider: FakeProvider, **kwargs) -> AIService:

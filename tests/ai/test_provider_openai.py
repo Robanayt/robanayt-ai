@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 from tests.ai.fakes import FakeTransport, openai_chat_response, sse_lines
 
-from jarvis.ai.errors import (
+from robanayt_ai.ai.errors import (
     ProviderAuthenticationError,
     ProviderConfigurationError,
     ProviderRateLimitError,
@@ -13,9 +13,9 @@ from jarvis.ai.errors import (
     ProviderTimeoutError,
     ProviderUnavailableError,
 )
-from jarvis.ai.http import KIND_AUTH, KIND_CONNECTION, KIND_PARSE, KIND_RATE_LIMIT, KIND_TIMEOUT, TransportError
-from jarvis.ai.models import AIRequest, AIMessage
-from jarvis.ai.providers.openai_compatible import OpenAICompatibleProvider
+from robanayt_ai.ai.http import KIND_AUTH, KIND_CONNECTION, KIND_PARSE, KIND_RATE_LIMIT, KIND_TIMEOUT, TransportError
+from robanayt_ai.ai.models import AIRequest, AIMessage
+from robanayt_ai.ai.providers.openai_compatible import OpenAICompatibleProvider
 
 # Obviously fake placeholder - never a real credential.
 FAKE_KEY = "FAKE-TEST-KEY-0000"

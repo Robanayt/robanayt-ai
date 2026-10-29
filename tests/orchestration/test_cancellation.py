@@ -8,9 +8,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from jarvis.orchestration import TurnCancellation
-from jarvis.orchestration.models import DialogStatus
-from jarvis.tools.models import ArgumentSpec, PermissionLevel
+from robanayt_ai.orchestration import TurnCancellation
+from robanayt_ai.orchestration.models import DialogStatus
+from robanayt_ai.tools.models import ArgumentSpec, PermissionLevel
 from tests.orchestration.dialog_fakes import (
     answer,
     make_dialog,

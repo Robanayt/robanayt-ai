@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.voice.errors import VoiceConfigurationError, VoiceUnavailableError
-from jarvis.voice.router import ANY_PRIVACY, AUTO, LOCAL_ONLY, NONE, VoiceRouter, normalize_privacy
+from robanayt_ai.voice.errors import VoiceConfigurationError, VoiceUnavailableError
+from robanayt_ai.voice.router import ANY_PRIVACY, AUTO, LOCAL_ONLY, NONE, VoiceRouter, normalize_privacy
 from tests.voice.fakes import RemoteSTT, ScriptedSTT, ScriptedTTS, UnavailableSTT
 
 

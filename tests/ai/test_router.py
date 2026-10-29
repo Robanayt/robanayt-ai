@@ -5,9 +5,9 @@ from __future__ import annotations
 import pytest
 from tests.ai.fakes import FakeProvider
 
-from jarvis.ai.errors import ProviderConfigurationError, ProviderUnavailableError
-from jarvis.ai.models import AIRequest, AIMessage
-from jarvis.ai.router import ProviderRouter, RoutingPolicy
+from robanayt_ai.ai.errors import ProviderConfigurationError, ProviderUnavailableError
+from robanayt_ai.ai.models import AIRequest, AIMessage
+from robanayt_ai.ai.router import ProviderRouter, RoutingPolicy
 
 
 def _request(metadata: dict | None = None) -> AIRequest:

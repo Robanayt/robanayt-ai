@@ -7,20 +7,20 @@ import json
 import pytest
 from tests.ai.fakes import FakeTransport, ollama_chat_response
 
-from jarvis.ai.errors import (
+from robanayt_ai.ai.errors import (
     ProviderConfigurationError,
     ProviderResponseError,
     ProviderTimeoutError,
     ProviderUnavailableError,
 )
-from jarvis.ai.http import (
+from robanayt_ai.ai.http import (
     KIND_CONNECTION,
     KIND_PARSE,
     KIND_TIMEOUT,
     TransportError,
 )
-from jarvis.ai.models import AIRequest, AIMessage
-from jarvis.ai.providers.ollama import DEFAULT_BASE_URL, OllamaProvider
+from robanayt_ai.ai.models import AIRequest, AIMessage
+from robanayt_ai.ai.providers.ollama import DEFAULT_BASE_URL, OllamaProvider
 
 
 def _request(model: str | None = None) -> AIRequest:

@@ -9,20 +9,20 @@ from __future__ import annotations
 
 from typing import Any, Callable
 
-from jarvis.voice.errors import (
+from robanayt_ai.voice.errors import (
     SpeechError,
     TranscriptionError,
     VoiceCancelledError,
     VoiceUnavailableError,
 )
-from jarvis.voice.models import (
+from robanayt_ai.voice.models import (
     LOCAL,
     REMOTE,
     Transcription,
     VoiceCapabilities,
     VoiceProviderStatus,
 )
-from jarvis.voice.providers.powershell import CommandResult
+from robanayt_ai.voice.providers.powershell import CommandResult
 
 
 class ScriptedSTT:

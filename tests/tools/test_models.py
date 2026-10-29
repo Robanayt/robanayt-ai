@@ -7,7 +7,7 @@ import math
 import pytest
 
 from tests.tools.helpers import FakeClock, PermissionLevel, approval_spec, safe_spec
-from jarvis.tools.models import (
+from robanayt_ai.tools.models import (
     ApprovalToken,
     ArgumentSpec,
     AuditRecord,

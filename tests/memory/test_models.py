@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.ai.models import AIRequest, AIMessage, VALID_ROLES
-from jarvis.memory.errors import MemoryValidationError
-from jarvis.memory.models import (
+from robanayt_ai.ai.models import AIRequest, AIMessage, VALID_ROLES
+from robanayt_ai.memory.errors import MemoryValidationError
+from robanayt_ai.memory.models import (
     Conversation,
     Message,
     PreparedContext,

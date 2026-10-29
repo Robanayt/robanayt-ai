@@ -13,16 +13,16 @@ from dataclasses import dataclass
 from pathlib import Path
 from types import SimpleNamespace
 
-from jarvis.core.bus import Event, EventBus
-from jarvis.memory.errors import MemoryExportError
-from jarvis.orchestration.models import (
+from robanayt_ai.core.bus import Event, EventBus
+from robanayt_ai.memory.errors import MemoryExportError
+from robanayt_ai.orchestration.models import (
     DialogResult,
     DialogStatus,
     PendingApproval,
     ToolCallRecord,
 )
-from jarvis.surfaces.bridge import DialogBridge
-from jarvis.surfaces.protocol import (
+from robanayt_ai.surfaces.bridge import DialogBridge
+from robanayt_ai.surfaces.protocol import (
     STATE_ANSWERING,
     STATE_CANCELLED,
     STATE_CANCELLING,
@@ -32,7 +32,7 @@ from jarvis.surfaces.protocol import (
     STATE_TOOL,
     STATE_WAITING,
 )
-from jarvis.tools import TOOL_EXECUTED
+from robanayt_ai.tools import TOOL_EXECUTED
 
 
 class FakeDialog:

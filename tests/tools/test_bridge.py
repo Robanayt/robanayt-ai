@@ -5,11 +5,11 @@ from __future__ import annotations
 import pytest
 
 from tests.tools.helpers import FakeClock
-from jarvis.core.config import ToolsConfig
-from jarvis.tools import build_tool_system
-from jarvis.tools.bridge import tool_call_from_ai, tool_descriptions
-from jarvis.tools.errors import ToolValidationError
-from jarvis.tools.models import ToolRequest, ToolStatus
+from robanayt_ai.core.config import ToolsConfig
+from robanayt_ai.tools import build_tool_system
+from robanayt_ai.tools.bridge import tool_call_from_ai, tool_descriptions
+from robanayt_ai.tools.errors import ToolValidationError
+from robanayt_ai.tools.models import ToolRequest, ToolStatus
 
 
 def test_descriptions_are_provider_neutral() -> None:

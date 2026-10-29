@@ -5,7 +5,7 @@ from __future__ import annotations
 import asyncio
 import threading
 
-from jarvis.core.bus import Event, EventBus
+from robanayt_ai.core.bus import Event, EventBus
 
 
 def test_handlers_run_in_registration_order() -> None:

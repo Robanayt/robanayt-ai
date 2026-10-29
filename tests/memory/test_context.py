@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.ai.models import AIRequest, AIMessage
-from jarvis.core.config import MemoryConfig
-from jarvis.memory.service import MemoryService
+from robanayt_ai.ai.models import AIRequest, AIMessage
+from robanayt_ai.core.config import MemoryConfig
+from robanayt_ai.memory.service import MemoryService
 
 
 @pytest.fixture()

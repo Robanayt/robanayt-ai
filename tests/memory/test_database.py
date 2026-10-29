@@ -6,14 +6,14 @@ import sqlite3
 
 import pytest
 
-import jarvis.memory.database as database_module
-from jarvis.memory.database import (
+import robanayt_ai.memory.database as database_module
+from robanayt_ai.memory.database import (
     SCHEMA_VERSION,
     Database,
     create_legacy_database,
     map_sqlite_error,
 )
-from jarvis.memory.errors import (
+from robanayt_ai.memory.errors import (
     DatabaseCorruptError,
     DatabaseLockedError,
     DatabaseUnavailableError,

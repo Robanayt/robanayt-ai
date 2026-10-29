@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.memory.database import Database
-from jarvis.memory.errors import MemoryValidationError, SavedMemoryNotFoundError
-from jarvis.memory.memory_store import MemoryStore
+from robanayt_ai.memory.database import Database
+from robanayt_ai.memory.errors import MemoryValidationError, SavedMemoryNotFoundError
+from robanayt_ai.memory.memory_store import MemoryStore
 
 
 @pytest.fixture()

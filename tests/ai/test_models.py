@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.ai.errors import AIRequestError
-from jarvis.ai.models import (
+from robanayt_ai.ai.errors import AIRequestError
+from robanayt_ai.ai.models import (
     AIChunk,
     AIRequest,
     AIResponse,

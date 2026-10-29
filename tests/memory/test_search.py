@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import pytest
 
-import jarvis.memory.database as database_module
-from jarvis.memory.conversation_store import ConversationStore
-from jarvis.memory.database import Database
-from jarvis.memory.memory_store import MemoryStore
-from jarvis.memory.search import BACKEND_FTS5, BACKEND_LIKE, SearchEngine
+import robanayt_ai.memory.database as database_module
+from robanayt_ai.memory.conversation_store import ConversationStore
+from robanayt_ai.memory.database import Database
+from robanayt_ai.memory.memory_store import MemoryStore
+from robanayt_ai.memory.search import BACKEND_FTS5, BACKEND_LIKE, SearchEngine
 
 
 @pytest.fixture()

@@ -21,9 +21,9 @@ import os
 
 import pytest
 
-from jarvis.ai.providers.ollama import OllamaProvider
-from jarvis.ai.service import AIService
-from jarvis.ai.router import ProviderRouter, RoutingPolicy
+from robanayt_ai.ai.providers.ollama import OllamaProvider
+from robanayt_ai.ai.service import AIService
+from robanayt_ai.ai.router import ProviderRouter, RoutingPolicy
 
 LIVE_URL = os.environ.get("JARVIS_OLLAMA_URL", "http://127.0.0.1:11434")
 LIVE_MODEL = os.environ.get("JARVIS_LIVE_MODEL", "llama3")

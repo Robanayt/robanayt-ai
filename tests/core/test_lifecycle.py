@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.core.lifecycle import InvalidTransitionError, Lifecycle, State
+from robanayt_ai.core.lifecycle import InvalidTransitionError, Lifecycle, State
 
 
 def test_initial_state_is_new() -> None:

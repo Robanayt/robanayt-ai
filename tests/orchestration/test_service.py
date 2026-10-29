@@ -15,11 +15,11 @@ from tests.orchestration.dialog_fakes import (
     structured_call,
     text_call,
 )
-from jarvis.ai.errors import ProviderUnavailableError
-from jarvis.ai.models import AIResponse
-from jarvis.memory.errors import MemoryLayerError
-from jarvis.orchestration.models import MAX_PENDING_TURNS, DialogStatus
-from jarvis.tools.models import ArgumentSpec, PermissionLevel
+from robanayt_ai.ai.errors import ProviderUnavailableError
+from robanayt_ai.ai.models import AIResponse
+from robanayt_ai.memory.errors import MemoryLayerError
+from robanayt_ai.orchestration.models import MAX_PENDING_TURNS, DialogStatus
+from robanayt_ai.tools.models import ArgumentSpec, PermissionLevel
 
 
 def test_plain_message_without_tools(tmp_path: Path) -> None:
@@ -491,7 +491,7 @@ def test_pending_turn_eviction_is_logged(
     tmp_path: Path, caplog: pytest.LogCaptureFixture
 ) -> None:
     """Beyond MAX_PENDING_TURNS the oldest turn is dropped - and reported."""
-    caplog.set_level(logging.WARNING, logger="jarvis.orchestration.service")
+    caplog.set_level(logging.WARNING, logger="robanayt_ai.orchestration.service")
     # Pruning runs before the new turn is stored, so the oldest turn is dropped
     # on the (MAX + 2)-th pending call and the count then stays bounded.
     sends = MAX_PENDING_TURNS + 2

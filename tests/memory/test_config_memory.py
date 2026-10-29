@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.core.config import ConfigError, MemoryConfig, default_config, load_config
+from robanayt_ai.core.config import ConfigError, MemoryConfig, default_config, load_config
 
 
 def test_defaults_are_local_and_relative() -> None:

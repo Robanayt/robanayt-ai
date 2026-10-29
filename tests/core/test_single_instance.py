@@ -7,8 +7,8 @@ import os
 
 import pytest
 
-import jarvis.core.single_instance as single_instance
-from jarvis.core.single_instance import (
+import robanayt_ai.core.single_instance as single_instance
+from robanayt_ai.core.single_instance import (
     InstanceAlreadyRunningError,
     SingleInstanceLock,
     read_lock_owner,

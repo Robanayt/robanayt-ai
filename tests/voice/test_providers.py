@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.voice import VoiceCancelledError, VoiceUnavailableError
-from jarvis.voice.providers.sapi import (
+from robanayt_ai.voice import VoiceCancelledError, VoiceUnavailableError
+from robanayt_ai.voice.providers.sapi import (
     SapiSpeechRecognizer,
     SapiSpeechSynthesizer,
     _b64,
@@ -132,7 +132,7 @@ def test_speak_fails_loudly_when_no_voice_exists() -> None:
 
 
 def test_speak_reports_backend_timeout() -> None:
-    from jarvis.voice.providers.powershell import CommandResult
+    from robanayt_ai.voice.providers.powershell import CommandResult
 
     runner = ScriptedRunner(
         {
@@ -146,7 +146,7 @@ def test_speak_reports_backend_timeout() -> None:
 
 
 def test_speak_reports_cancellation() -> None:
-    from jarvis.orchestration.turn import TurnCancellation
+    from robanayt_ai.orchestration.turn import TurnCancellation
 
     runner = ScriptedRunner({KIND_TTS_PROBE: command_ok("VOICE|voice|ru-RU")})
     synthesizer = _synth(runner)
@@ -158,7 +158,7 @@ def test_speak_reports_cancellation() -> None:
 
 
 def test_transcribe_reports_cancellation() -> None:
-    from jarvis.orchestration.turn import TurnCancellation
+    from robanayt_ai.orchestration.turn import TurnCancellation
 
     runner = ScriptedRunner({KIND_STT_PROBE: command_ok("RECOGNIZER|ru-RU|MS")})
     recognizer = _recognizer(runner)

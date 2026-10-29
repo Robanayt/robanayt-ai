@@ -5,8 +5,8 @@ from __future__ import annotations
 import pytest
 
 from tests.tools.helpers import FakeClock, approval_spec, denied_spec, safe_spec
-from jarvis.tools.models import PermissionLevel, digest_of
-from jarvis.tools.policy import PermissionPolicy
+from robanayt_ai.tools.models import PermissionLevel, digest_of
+from robanayt_ai.tools.policy import PermissionPolicy
 
 
 def test_safe_tool_is_allowed() -> None:

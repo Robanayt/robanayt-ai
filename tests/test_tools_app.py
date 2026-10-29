@@ -6,7 +6,7 @@ import json
 import urllib.error
 import urllib.request
 
-from jarvis.app import EXIT_OK, EXIT_TOOL_ERROR, main
+from robanayt_ai.app import EXIT_OK, EXIT_TOOL_ERROR, main
 
 
 def test_startup_registers_but_never_executes(capsys, tmp_path, monkeypatch) -> None:

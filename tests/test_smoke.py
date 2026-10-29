@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-import jarvis
-from jarvis.app import EXIT_OK, STATUS_NO_COMPONENTS, build_startup_message, main
+import robanayt_ai
+from robanayt_ai.app import EXIT_OK, STATUS_NO_COMPONENTS, build_startup_message, main
 
 
 def test_package_exposes_metadata() -> None:
-    assert jarvis.__version__ == "0.5.0"
-    assert jarvis.__phase__ == "phase-8"
+    assert robanayt_ai.__version__ == "0.5.0"
+    assert robanayt_ai.__phase__ == "phase-8"
 
 
 def test_startup_message_is_clear() -> None:

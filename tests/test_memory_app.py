@@ -6,7 +6,7 @@ import json
 import urllib.error
 import urllib.request
 
-from jarvis.app import EXIT_MEMORY_ERROR, EXIT_OK, main
+from robanayt_ai.app import EXIT_MEMORY_ERROR, EXIT_OK, main
 
 
 def _block_network(monkeypatch) -> None:
@@ -76,8 +76,8 @@ def test_memory_round_trip_through_cli(tmp_path, monkeypatch, capsys) -> None:
     assert main(["--memory-status"]) == EXIT_OK
     capsys.readouterr()
 
-    from jarvis.core.config import MemoryConfig
-    from jarvis.memory.service import MemoryService
+    from robanayt_ai.core.config import MemoryConfig
+    from robanayt_ai.memory.service import MemoryService
 
     service = MemoryService(MemoryConfig(directory="runtime/memory"))
     conversation = service.create_conversation("cli trip", now=1.0)
@@ -101,8 +101,8 @@ def test_memory_round_trip_through_cli(tmp_path, monkeypatch, capsys) -> None:
 def test_memory_search_prints_snippets(tmp_path, monkeypatch, capsys) -> None:
     monkeypatch.chdir(tmp_path)
 
-    from jarvis.core.config import MemoryConfig
-    from jarvis.memory.service import MemoryService
+    from robanayt_ai.core.config import MemoryConfig
+    from robanayt_ai.memory.service import MemoryService
 
     service = MemoryService(MemoryConfig(directory="runtime/memory"))
     conversation = service.create_conversation("searchable", now=1.0)

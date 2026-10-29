@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from tests.orchestration.dialog_fakes import FakeClock
-from jarvis.orchestration.models import (
+from robanayt_ai.orchestration.models import (
     DialogResult,
     DialogStatus,
     PendingApproval,

@@ -4,13 +4,13 @@ from __future__ import annotations
 
 import json
 
-from jarvis.orchestration.models import (
+from robanayt_ai.orchestration.models import (
     DialogResult,
     DialogStatus,
     PendingApproval,
     ToolCallRecord,
 )
-from jarvis.surfaces.protocol import (
+from robanayt_ai.surfaces.protocol import (
     STATE_ERROR,
     STATE_IDLE,
     STATE_LABELS,

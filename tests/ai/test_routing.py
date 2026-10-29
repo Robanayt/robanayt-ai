@@ -8,11 +8,11 @@ from __future__ import annotations
 import pytest
 from tests.ai.fakes import FakeProvider
 
-from jarvis.ai.errors import ProviderAuthenticationError, ProviderUnavailableError
-from jarvis.ai.models import AIRequest, AIMessage
-from jarvis.ai.provider import ProviderProfile
-from jarvis.ai.router import LOCAL_ONLY, ProviderRouter, RoutingPolicy
-from jarvis.ai.service import AIService
+from robanayt_ai.ai.errors import ProviderAuthenticationError, ProviderUnavailableError
+from robanayt_ai.ai.models import AIRequest, AIMessage
+from robanayt_ai.ai.provider import ProviderProfile
+from robanayt_ai.ai.router import LOCAL_ONLY, ProviderRouter, RoutingPolicy
+from robanayt_ai.ai.service import AIService
 
 
 def _request(metadata: dict | None = None, model: str | None = None) -> AIRequest:

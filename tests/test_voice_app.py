@@ -7,8 +7,8 @@ from pathlib import Path
 
 import pytest
 
-from jarvis import app as app_module
-from jarvis.app import EXIT_OK, EXIT_VOICE_ERROR, build_voice, main
+from robanayt_ai import app as app_module
+from robanayt_ai.app import EXIT_OK, EXIT_VOICE_ERROR, build_voice, main
 from tests.voice.fakes import ScriptedRunner, command_ok
 
 KIND_SPEAK = "kind=speak"
@@ -178,7 +178,7 @@ def test_voice_is_not_probed_at_construction(tmp_path, monkeypatch) -> None:
 
 @pytest.mark.parametrize("argument", ["--voice", "--voice-say", "--voice-listen"])
 def test_voice_commands_are_registered(argument: str) -> None:
-    from jarvis.app import build_parser
+    from robanayt_ai.app import build_parser
 
     parser = build_parser()
     args = parser.parse_args(

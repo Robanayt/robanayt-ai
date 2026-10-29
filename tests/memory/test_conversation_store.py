@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import pytest
 
-from jarvis.memory.conversation_store import ConversationStore
-from jarvis.memory.database import Database
-from jarvis.memory.errors import (
+from robanayt_ai.memory.conversation_store import ConversationStore
+from robanayt_ai.memory.database import Database
+from robanayt_ai.memory.errors import (
     ConversationNotFoundError,
     MemoryImportError,
     MemoryValidationError,
 )
-from jarvis.memory.models import Conversation
+from robanayt_ai.memory.models import Conversation
 
 
 @pytest.fixture()

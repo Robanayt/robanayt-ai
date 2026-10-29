@@ -6,8 +6,8 @@ import json
 
 import pytest
 
-from jarvis.ai.models import AIResponse, AIMessage
-from jarvis.orchestration.protocol import (
+from robanayt_ai.ai.models import AIResponse, AIMessage
+from robanayt_ai.orchestration.protocol import (
     SOURCE_METADATA,
     SOURCE_TEXT,
     TOOL_CALL_KEY,

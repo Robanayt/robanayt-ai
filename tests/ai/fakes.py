@@ -6,9 +6,9 @@ import json
 from collections.abc import Iterator, Mapping
 from typing import Any
 
-from jarvis.ai.http import KIND_CONNECTION, TransportError
-from jarvis.ai.models import AIChunk, AIRequest, AIResponse, ProviderStatus
-from jarvis.ai.provider import ProviderCapabilities, ProviderProfile
+from robanayt_ai.ai.http import KIND_CONNECTION, TransportError
+from robanayt_ai.ai.models import AIChunk, AIRequest, AIResponse, ProviderStatus
+from robanayt_ai.ai.provider import ProviderCapabilities, ProviderProfile
 
 
 class FakeTransport:

@@ -7,12 +7,12 @@ import time
 
 import pytest
 
-from jarvis.core.bus import EventBus
-from jarvis.orchestration.turn import TurnCancellation
-from jarvis.voice.errors import SpeechError, TranscriptionError
-from jarvis.voice.models import VoiceState
-from jarvis.voice.router import LOCAL_ONLY, VoiceRouter
-from jarvis.voice.session import VOICE_STATE_CHANGED, VoiceSession
+from robanayt_ai.core.bus import EventBus
+from robanayt_ai.orchestration.turn import TurnCancellation
+from robanayt_ai.voice.errors import SpeechError, TranscriptionError
+from robanayt_ai.voice.models import VoiceState
+from robanayt_ai.voice.router import LOCAL_ONLY, VoiceRouter
+from robanayt_ai.voice.session import VOICE_STATE_CHANGED, VoiceSession
 from tests.voice.fakes import (
     RecordingDialog,
     ScriptedSTT,
@@ -112,7 +112,7 @@ class BlockingSTT:
         self.calls: list[dict] = []
 
     def status(self, *, probe: bool = False):
-        from jarvis.voice.models import VoiceProviderStatus
+        from robanayt_ai.voice.models import VoiceProviderStatus
 
         return VoiceProviderStatus(provider=self.id, configured=True, available=True)
 
@@ -121,7 +121,7 @@ class BlockingSTT:
 
     @property
     def capabilities(self):
-        from jarvis.voice.models import VoiceCapabilities
+        from robanayt_ai.voice.models import VoiceCapabilities
 
         return VoiceCapabilities(local=True, streaming=False, cancel_supported=True)
 
@@ -130,12 +130,12 @@ class BlockingSTT:
         deadline = time.time() + min(timeout_seconds, 3.0)
         while time.time() < deadline:
             if cancellation is not None and cancellation.requested:
-                from jarvis.voice.errors import VoiceCancelledError
+                from robanayt_ai.voice.errors import VoiceCancelledError
 
                 self.stopped.set()
                 raise VoiceCancelledError("распознавание отменено")
             time.sleep(0.01)
-        from jarvis.voice.errors import VoiceCancelledError
+        from robanayt_ai.voice.errors import VoiceCancelledError
 
         raise VoiceCancelledError("время вышло")
 
