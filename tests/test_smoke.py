@@ -13,7 +13,7 @@ def test_package_exposes_metadata() -> None:
 
 def test_startup_message_is_clear() -> None:
     message = build_startup_message()
-    assert "JARVIS_AI" in message
+    assert "Robanayt AI" in message
     assert STATUS_NO_COMPONENTS in message
 
 

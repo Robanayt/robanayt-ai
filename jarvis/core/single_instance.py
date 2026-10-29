@@ -145,7 +145,7 @@ class SingleInstanceLock:
         """Convenience for callers that want an exception instead of False."""
         if not self.acquire():
             raise InstanceAlreadyRunningError(
-                f"another JARVIS_AI instance is already running (lock: {self.path})"
+                f"another Robanayt AI instance is already running (lock: {self.path})"
             )
 
     def __enter__(self) -> SingleInstanceLock:

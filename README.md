@@ -41,7 +41,7 @@ python -m jarvis
 Ожидаемый вывод:
 
 ```
-JARVIS_AI - starting
+Robanayt AI - starting
 phase:    phase-8
 version:  0.5.0
 status:   no components registered
@@ -70,9 +70,10 @@ dialog:
 note:     AI backend is configured but not contacted; tools are registered but not executed; audio, GUI and OS automation are not wired.
 ```
 
-Блок выше — ожидаемый вывод сборки: он печатает техническое имя пакета
-`JARVIS_AI` и его метаданные (`phase-8`). Переименование этого вывода требует
-правки кода и в этой задаче не делалось.
+Блок выше — ожидаемый вывод сборки: баннер печатает название продукта
+`Robanayt AI` и его метаданные (`phase-8`). Техническое имя пакета остаётся
+`jarvis` — это видно в способе запуска (`python -m jarvis`), в импортах и в
+переменных окружения `JARVIS_*`.
 
 Полезные варианты запуска:
 

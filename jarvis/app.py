@@ -79,11 +79,13 @@ logger = logging.getLogger(__name__)
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="jarvis", description="JARVIS_AI assistant")
+    parser = argparse.ArgumentParser(
+        prog="robanayt-ai", description="Robanayt AI assistant"
+    )
     parser.add_argument(
         "--version",
         action="version",
-        version=f"jarvis {__version__} ({__phase__})",
+        version=f"Robanayt AI {__version__} ({__phase__})",
     )
     parser.add_argument("--config", help="path to a TOML configuration file")
     parser.add_argument(
@@ -318,7 +320,7 @@ def launch_ui(
     """
     if not TK_AVAILABLE:
         print(
-            "JARVIS_AI - interface unavailable: tkinter is not available "
+            "Robanayt AI - interface unavailable: tkinter is not available "
             "in this Python installation",
             file=sys.stderr,
         )
@@ -348,7 +350,7 @@ def launch_ui(
     try:
         launch(bridge)
     except Exception as exc:  # noqa: BLE001 - never crash into a traceback
-        print(f"JARVIS_AI - interface error: {sanitize(str(exc))}", file=sys.stderr)
+        print(f"Robanayt AI - interface error: {sanitize(str(exc))}", file=sys.stderr)
         logger.error("desktop interface failed: %s", sanitize(str(exc)), exc_info=exc)
         return EXIT_CONFIG_ERROR
     return EXIT_OK
@@ -366,7 +368,7 @@ def build_startup_message(
     config = config or Config()
     log_file = str(config.logging.log_path) if config.logging.to_file else "disabled"
     lines = [
-        "JARVIS_AI - starting",
+        "Robanayt AI - starting",
         f"phase:    {__phase__}",
         f"version:  {__version__}",
         f"status:   {STATUS_NO_COMPONENTS}",
@@ -461,7 +463,7 @@ def send_dialog(dialog: DialogService, args: argparse.Namespace) -> int:
             system_prompt=args.dialog_system,
         )
     except ValueError as exc:
-        print(f"JARVIS_AI - dialog error: {exc}", file=sys.stderr)
+        print(f"Robanayt AI - dialog error: {exc}", file=sys.stderr)
         return EXIT_DIALOG_ERROR
     _print_dialog_result(result)
     return EXIT_OK if result.status is DialogStatus.SUCCESS else EXIT_DIALOG_ERROR
@@ -476,7 +478,7 @@ def approve_dialog_call(dialog: DialogService, pending_id: str) -> int:
 
 def list_pending_calls(dialog: DialogService) -> int:
     """List calls waiting for approval (no argument values)."""
-    print("JARVIS_AI - pending tool calls")
+    print("Robanayt AI - pending tool calls")
     pending = dialog.pending()
     if not pending:
         print("  (none)")
@@ -487,7 +489,7 @@ def list_pending_calls(dialog: DialogService) -> int:
 
 def _print_dialog_result(result: DialogResult) -> None:
     """Print a turn result: never a traceback, never a secret."""
-    print("JARVIS_AI - dialog")
+    print("Robanayt AI - dialog")
     print(f"  status:       {result.status.value}")
     print(f"  conversation: {result.conversation_id or '-'}")
     print(f"  tool calls:   {result.tool_call_count}")
@@ -509,7 +511,7 @@ def _print_dialog_result(result: DialogResult) -> None:
 
 def list_tools(tools: ToolSystem) -> int:
     """List registered tools - metadata only, nothing is executed."""
-    print("JARVIS_AI - registered tools")
+    print("Robanayt AI - registered tools")
     if not len(tools.registry):
         print("  (none)")
         return EXIT_OK
@@ -527,7 +529,7 @@ def describe_tools(tools: ToolSystem) -> int:
 
 def show_tool_audit(tools: ToolSystem) -> int:
     """Print the audit records produced by this run (no argument values)."""
-    print("JARVIS_AI - tool audit")
+    print("Robanayt AI - tool audit")
     records = tools.audit.records() if tools.audit is not None else ()
     if not records:
         print("  (no executions in this run)")
@@ -541,11 +543,11 @@ def run_tool(tools: ToolSystem, name: str, raw_arguments: str | None, approve: b
     try:
         arguments = json.loads(raw_arguments) if raw_arguments else {}
         if not isinstance(arguments, dict):
-            print("JARVIS_AI - --tools-args must be a JSON object", file=sys.stderr)
+            print("Robanayt AI - --tools-args must be a JSON object", file=sys.stderr)
             return EXIT_TOOL_ERROR
         request = tool_call_from_ai({"name": name, "arguments": arguments}, caller="cli")
     except (ValueError, ToolError) as exc:
-        print(f"JARVIS_AI - tool error: {exc}", file=sys.stderr)
+        print(f"Robanayt AI - tool error: {exc}", file=sys.stderr)
         logger.error("tool request rejected: %s", exc)
         return EXIT_TOOL_ERROR
 
@@ -553,7 +555,7 @@ def run_tool(tools: ToolSystem, name: str, raw_arguments: str | None, approve: b
     if approve:
         tool = tools.registry.get(request.tool)
         if tool is None:
-            print(f"JARVIS_AI - unknown tool: {request.tool}", file=sys.stderr)
+            print(f"Robanayt AI - unknown tool: {request.tool}", file=sys.stderr)
             return EXIT_TOOL_ERROR
         approval = tools.policy.grant(tool.spec, request.arguments_digest())
 
@@ -567,7 +569,7 @@ def run_tool(tools: ToolSystem, name: str, raw_arguments: str | None, approve: b
 
 def report_memory_status(memory: MemoryService) -> int:
     """Print memory statistics. Opens (and creates) the database on request."""
-    print("JARVIS_AI - memory status")
+    print("Robanayt AI - memory status")
     try:
         stats = memory.stats()
     except MemoryLayerError as exc:
@@ -584,7 +586,7 @@ def report_memory_status(memory: MemoryService) -> int:
 
 def list_conversations(memory: MemoryService) -> int:
     """List conversations with metadata only - never prints message text."""
-    print("JARVIS_AI - conversations")
+    print("Robanayt AI - conversations")
     try:
         conversations = memory.conversations.list_conversations()
     except MemoryLayerError as exc:
@@ -605,7 +607,7 @@ def show_conversation(memory: MemoryService, conversation_id: str) -> int:
         messages = memory.conversations.get_messages(conversation_id)
     except MemoryLayerError as exc:
         return _report_memory_error(exc)
-    print(f"JARVIS_AI - conversation {conversation.id} ({conversation.title or 'untitled'})")
+    print(f"Robanayt AI - conversation {conversation.id} ({conversation.title or 'untitled'})")
     if not messages:
         print("  (no messages)")
     for message in messages:
@@ -621,7 +623,7 @@ def export_conversation(memory: MemoryService, conversation_id: str, out: str | 
         path = memory.export_conversation_to_file(conversation_id, target)
     except MemoryLayerError as exc:
         return _report_memory_error(exc)
-    print(f"JARVIS_AI - exported conversation {conversation_id} to {path}")
+    print(f"Robanayt AI - exported conversation {conversation_id} to {path}")
     return EXIT_OK
 
 
@@ -631,7 +633,7 @@ def search_memory(memory: MemoryService, query: str) -> int:
         results = memory.recall(query)
     except MemoryLayerError as exc:
         return _report_memory_error(exc)
-    print(f"JARVIS_AI - search results for {query!r}")
+    print(f"Robanayt AI - search results for {query!r}")
     if not results:
         print("  (no matches)")
     for result in results:
@@ -644,7 +646,7 @@ def clear_memories(memory: MemoryService, confirmed: bool) -> int:
     """Delete every saved memory - requires explicit confirmation."""
     if not confirmed:
         print(
-            "JARVIS_AI - refusing to clear saved memories without --yes",
+            "Robanayt AI - refusing to clear saved memories without --yes",
             file=sys.stderr,
         )
         return EXIT_MEMORY_ERROR
@@ -652,12 +654,12 @@ def clear_memories(memory: MemoryService, confirmed: bool) -> int:
         removed = memory.memories.clear_all(confirm=True)
     except MemoryLayerError as exc:
         return _report_memory_error(exc)
-    print(f"JARVIS_AI - cleared {removed} saved memories")
+    print(f"Robanayt AI - cleared {removed} saved memories")
     return EXIT_OK
 
 
 def _report_memory_error(exc: MemoryLayerError) -> int:
-    print(f"JARVIS_AI - memory error: {exc}", file=sys.stderr)
+    print(f"Robanayt AI - memory error: {exc}", file=sys.stderr)
     logger.error("memory operation failed: %s", exc)
     return EXIT_MEMORY_ERROR
 
@@ -665,7 +667,7 @@ def _report_memory_error(exc: MemoryLayerError) -> int:
 def report_ai_status(service: AIService, *, probe: bool) -> int:
     """Print provider statuses. `probe=True` is the only network usage."""
     statuses = service.status(probe=probe)
-    print("JARVIS_AI - AI provider status")
+    print("Robanayt AI - AI provider status")
     for status in statuses:
         state = "ready" if status.ok else "unavailable"
         print(
@@ -681,7 +683,7 @@ def report_ai_status(service: AIService, *, probe: bool) -> int:
 def report_ai_routing(service: AIService) -> int:
     """Explain the routing decision without contacting anything."""
     routing = service.explain()
-    print("JARVIS_AI - AI routing")
+    print("Robanayt AI - AI routing")
     print(f"  policy:   {routing['policy']} ({routing['policy_note']})")
     print(f"  remote:   {'allowed' if routing['allow_remote'] else 'blocked'}")
     print(f"  failover: {'on' if routing['allow_fallback'] else 'off'}")
@@ -718,7 +720,7 @@ def run_generation(service: AIService, args: argparse.Namespace) -> int:
             system=args.ai_system,
         )
     except AIError as exc:
-        print(f"JARVIS_AI - AI error: {sanitize(str(exc))}", file=sys.stderr)
+        print(f"Robanayt AI - AI error: {sanitize(str(exc))}", file=sys.stderr)
         logger.error("AI request failed: %s", sanitize(str(exc)))
         return EXIT_AI_ERROR
     print(response.content)
@@ -734,7 +736,7 @@ def run_generation(service: AIService, args: argparse.Namespace) -> int:
 def report_voice_status(session: VoiceSession, *, probe: bool = True) -> int:
     """Voice diagnostics: what exists, what works, and why not. Read-only."""
     summary = session.explain(probe=probe)
-    print("JARVIS_AI - voice status")
+    print("Robanayt AI - voice status")
     print(f"  subsystem:  {'enabled' if summary['enabled'] else 'disabled'}")
     print(
         f"  privacy:    {summary['privacy']} "
@@ -783,10 +785,10 @@ def report_voice_status(session: VoiceSession, *, probe: bool = True) -> int:
 def speak_text(session: VoiceSession, text: str) -> int:
     """Speak one explicit text. Returns EXIT_VOICE_ERROR when it cannot."""
     if session.speak(text):
-        print("JARVIS_AI - spoken successfully")
+        print("Robanayt AI - spoken successfully")
         return EXIT_OK
     message = session.last_error or "голос недоступен"
-    print(f"JARVIS_AI - voice error: {message}", file=sys.stderr)
+    print(f"Robanayt AI - voice error: {message}", file=sys.stderr)
     return EXIT_VOICE_ERROR
 
 
@@ -794,13 +796,13 @@ def listen_once(session: VoiceSession) -> int:
     """Listen once and run the transcript through the dialogue layer."""
     turn = session.listen()
     if turn.transcript_empty:
-        print("JARVIS_AI - речь не распознана: ход не отправлен")
+        print("Robanayt AI - речь не распознана: ход не отправлен")
         return EXIT_OK
     if turn.transcript:
         # Heard something: say what, before saying what happened next.
         print(f"распознано: {turn.transcript}")
     if turn.error:
-        print(f"JARVIS_AI - voice error: {turn.error}", file=sys.stderr)
+        print(f"Robanayt AI - voice error: {turn.error}", file=sys.stderr)
         return EXIT_VOICE_ERROR
     if turn.pending:
         # A spoken request stops at the same gate a typed one does.
@@ -821,7 +823,7 @@ def run(argv: Sequence[str] | None = None) -> int:
         config = load_config(args.config)
         mode = RunMode.from_value(args.run_mode or config.runtime.run_mode)
     except (ConfigError, ValueError) as exc:
-        print(f"JARVIS_AI - configuration error: {exc}", file=sys.stderr)
+        print(f"Robanayt AI - configuration error: {exc}", file=sys.stderr)
         return EXIT_CONFIG_ERROR
 
     if args.log_level:
@@ -918,7 +920,7 @@ def run(argv: Sequence[str] | None = None) -> int:
         if config.runtime.single_instance and not args.no_single_instance:
             if not lock.acquire():
                 message = (
-                    f"JARVIS_AI is already running (lock: {lock.path}); "
+                    f"Robanayt AI is already running (lock: {lock.path}); "
                     "this instance exits without touching the other one"
                 )
                 print(message, file=sys.stderr)
