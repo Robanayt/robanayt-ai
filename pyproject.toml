@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jarvis"
+version = "0.5.0"
+description = "Robanayt AI - local-first personal assistant (Phase 8)"
+readme = "README.md"
+requires-python = ">=3.10"
+# Phase 0: zero runtime dependencies. Heavy deps (torch, silero, piper,
+# opencv, mcp) are planned for later phases only.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+jarvis = "jarvis.app:main"
+
+[tool.setuptools.packages.find]
+include = ["jarvis*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+# Позволяет `import jarvis` без установки пакета в окружение.
+pythonpath = ["."]

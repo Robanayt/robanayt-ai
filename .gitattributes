@@ -1,0 +1,6 @@
+# Line endings: the repository stores LF, the working tree keeps the native
+# line ending. PowerShell and batch scripts must stay CRLF - Windows refuses
+# to run them with LF-only line breaks.
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf

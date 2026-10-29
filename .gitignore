@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.python-version
+
+# Local environment
+.venv/
+venv/
+
+# Local config and secrets (only config.example.toml is tracked)
+config/config.toml
+config/*.local.toml
+.env
+.env.*
+!.env.example
+
+# Runtime data
+runtime/
+logs/
+*.log
+*.db
+*.sqlite3
+
+# Tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editors and IDE
+.codebuddy/
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temporary and backup files
+_tmp_*.py
+*.tmp
+*.bak
+*.orig
+*~
+
+# OS
+Thumbs.db
+.DS_Store
